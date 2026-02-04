@@ -1,0 +1,15 @@
+# Source content (not part of the site)
+slashcareer.pdf
+
+# IDE / editor
+.cursorrules
+.cursor/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel/

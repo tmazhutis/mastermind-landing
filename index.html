@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастермайнд для слэш-карьеристов — Таня Мажутис</title>
+    <meta name="description" content="Мастермайнд-группа для тех, кто совмещает несколько проектов. 7 встреч за 7 недель. Модератор — Таня Мажутис.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --yellow: #f6c74f;
+            --yellow-light: #fdf4d6;
+            --yellow-bg: #fef9ec;
+            --lavender: #91a6ff;
+            --lavender-light: #e0e7ff;
+            --teal: #004e52;
+            --coral: #ff714e;
+            --coral-light: #ffe0d6;
+            --pink: #ff88dc;
+            --pink-light: #ffe0f5;
+            --text: #1a1a1a;
+            --text-light: #555;
+            --white: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.65;
+            font-size: 17px;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section { padding: 80px 0; }
+
+        h1, h2, h3 { font-weight: 700; line-height: 1.25; }
+        h1 { font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; }
+        h2 { font-size: clamp(24px, 3.5vw, 34px); margin-bottom: 32px; letter-spacing: -0.01em; }
+        h3 { font-size: 20px; margin-bottom: 12px; }
+        p + p { margin-top: 16px; }
+        strong { font-weight: 700; }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--coral);
+            color: var(--white);
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 113, 78, 0.35);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 120px 0 80px;
+            background: var(--yellow-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -100px;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: var(--yellow-light);
+            opacity: 0.7;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px; left: -80px;
+            width: 250px; height: 250px;
+            border-radius: 50%;
+            background: var(--lavender-light);
+            opacity: 0.4;
+        }
+        .hero .container { position: relative; z-index: 1; }
+        .hero__tag {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--text);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+        .hero h1 { margin-bottom: 24px; max-width: 650px; }
+        .hero__subtitle {
+            font-size: 19px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        .hero__details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 40px;
+            font-size: 15px;
+            color: var(--text-light);
+        }
+        .hero__detail { display: flex; align-items: center; gap: 8px; }
+        .hero__detail-icon {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; flex-shrink: 0;
+        }
+
+        /* ===== About host ===== */
+        .about { background: var(--white); }
+        .about__inner {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .about__photo {
+            width: 280px;
+            flex-shrink: 0;
+        }
+        .about__photo img { width: 100%; height: auto; display: block; }
+        .about__name {
+            font-size: 14px; font-weight: 700;
+            color: var(--coral);
+            margin-bottom: 8px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .about__text p { color: var(--text-light); }
+        .about__highlight {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: var(--yellow-bg);
+            border-radius: 16px;
+            border-left: 4px solid var(--yellow);
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        /* ===== For whom ===== */
+        .for-whom { background: var(--yellow-bg); }
+        .for-whom__intro { font-size: 19px; color: var(--text-light); margin-bottom: 32px; }
+        .roles-list {
+            list-style: none;
+            display: flex; flex-wrap: wrap;
+            gap: 12px; margin-bottom: 40px;
+        }
+        .roles-list li {
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        .pain-points { margin-top: 40px; }
+        .pain-point { display: flex; gap: 16px; align-items: start; margin-bottom: 20px; }
+        .pain-point__arrow { color: var(--coral); font-weight: 700; font-size: 20px; line-height: 1.5; flex-shrink: 0; }
+        .pain-point__text { color: var(--text-light); }
+        .pain-point__title { font-weight: 700; color: var(--text); }
+
+        /* ===== Scenarios ===== */
+        .scenarios { background: var(--white); }
+        .scenario-card { padding: 32px; border-radius: 20px; margin-bottom: 24px; }
+        .scenario-card:nth-child(1) { background: var(--coral-light); }
+        .scenario-card:nth-child(2) { background: var(--lavender-light); }
+        .scenario-card h3 { margin-bottom: 16px; }
+        .scenario-card p { color: var(--text-light); }
+
+        /* ===== Format ===== */
+        .format { background: var(--yellow-bg); }
+        .format-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+        .format-card { padding: 32px; border-radius: 20px; background: var(--white); }
+        .format-card__icon {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; margin-bottom: 16px;
+        }
+        .format-card h3 { margin-bottom: 8px; }
+        .format-card p { color: var(--text-light); font-size: 15px; }
+
+        /* ===== Schedule ===== */
+        .schedule { background: var(--white); }
+        .schedule-list { list-style: none; }
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            align-items: start;
+        }
+        .schedule-item:last-child { border-bottom: none; }
+        .schedule-date {
+            font-weight: 700;
+            color: var(--teal);
+            font-size: 15px;
+        }
+        .schedule-date span {
+            display: block;
+            font-weight: 400;
+            color: var(--text-light);
+            font-size: 13px;
+            margin-top: 2px;
+        }
+        .schedule-info { font-size: 15px; color: var(--text-light); }
+        .schedule-info strong { color: var(--text); }
+        .schedule-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-right: 8px;
+        }
+        .schedule-badge--mm { background: var(--coral-light); color: var(--coral); }
+        .schedule-badge--cw { background: var(--lavender-light); color: var(--lavender); }
+
+        /* ===== Topics ===== */
+        .topics { background: var(--yellow-bg); }
+        .topics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .topic-block h3 { padding-bottom: 12px; margin-bottom: 16px; border-bottom: 3px solid var(--yellow); }
+        .topic-block:nth-child(2) h3 { border-color: var(--coral); }
+        .topic-block:nth-child(3) h3 { border-color: var(--lavender); }
+        .topic-block:nth-child(4) h3 { border-color: var(--teal); }
+        .topic-block ul { list-style: none; }
+        .topic-block li {
+            padding: 8px 0;
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.55;
+            position: relative;
+            padding-left: 16px;
+        }
+        .topic-block li::before {
+            content: '?';
+            position: absolute; left: 0;
+            color: var(--text-light); opacity: 0.4; font-size: 13px;
+        }
+
+        /* ===== What you get ===== */
+        .results { background: var(--yellow-bg); }
+        .results__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .result-card { padding: 28px; border-radius: 16px; background: var(--white); }
+        .result-card h3 { color: var(--teal); margin-bottom: 12px; }
+        .result-card p { color: var(--text-light); font-size: 15px; }
+
+        /* ===== Outcomes ===== */
+        .outcomes { background: var(--teal); color: var(--white); }
+        .outcomes h2 { color: var(--white); }
+        .outcomes__subtitle { color: rgba(255,255,255,0.8); margin-bottom: 32px; }
+        .outcomes-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .outcomes-list li {
+            padding: 20px 24px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.1);
+            font-size: 15px;
+            color: rgba(255,255,255,0.9);
+        }
+        .outcomes__note {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            border-left: 4px solid var(--yellow);
+            font-style: italic;
+            color: rgba(255,255,255,0.75);
+            font-size: 15px;
+        }
+
+        /* ===== Reviews ===== */
+        .reviews { background: var(--yellow-bg); }
+        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .review-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 20px;
+            position: relative;
+        }
+        .review-card::before {
+            content: '\201C';
+            font-size: 60px;
+            line-height: 1;
+            color: var(--yellow);
+            position: absolute;
+            top: 16px; left: 24px;
+            font-family: Georgia, serif;
+        }
+        .review-card__text {
+            color: var(--text-light);
+            font-size: 15px;
+            padding-top: 28px;
+            line-height: 1.7;
+        }
+        .review-card__author {
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .reviews__more {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .reviews__more a {
+            color: var(--teal);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        /* ===== Logistics ===== */
+        .logistics { background: var(--white); padding: 40px 0; }
+        .logistics__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .logistics__item {
+            text-align: center;
+            padding: 16px 12px;
+            background: var(--yellow-bg);
+            border-radius: 16px;
+        }
+        .logistics__value { font-size: 24px; font-weight: 700; color: var(--teal); margin-bottom: 4px; }
+        .logistics__label { font-size: 13px; color: var(--text-light); }
+        .logistics__price { text-align: center; margin-top: 20px; }
+        .logistics__price-value { font-size: clamp(32px, 5vw, 44px); font-weight: 700; color: var(--teal); }
+        .logistics__price-alt { font-size: 18px; color: var(--text-light); }
+        .logistics__price-period { font-size: 16px; color: var(--text-light); margin-bottom: 0; }
+
+        /* ===== FAQ ===== */
+        .faq { background: var(--white); }
+        .faq-list { list-style: none; }
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 24px 40px 24px 0;
+            font-family: 'Manrope', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text);
+            text-align: left;
+            cursor: pointer;
+            position: relative;
+            line-height: 1.4;
+        }
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 0; top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--coral);
+            transition: transform 0.2s;
+        }
+        .faq-item.open .faq-question::after {
+            content: '\2212';
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+        .faq-answer__inner {
+            padding: 0 0 24px;
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ===== CTA section ===== */
+        .cta-section {
+            background: var(--teal);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(246, 199, 79, 0.15);
+        }
+        .cta-section .container { position: relative; z-index: 1; }
+        .cta-section h2 { color: var(--white); margin-bottom: 16px; }
+        .cta-section p { color: rgba(255,255,255,0.8); margin-bottom: 40px; font-size: 18px; }
+        .cta-section .cta-btn {
+            background: var(--yellow);
+            color: var(--text);
+            font-size: 18px;
+            padding: 18px 48px;
+        }
+        .cta-section .cta-btn:hover { box-shadow: 0 8px 24px rgba(246, 199, 79, 0.4); }
+
+        .cta-section__contact {
+            margin-top: 32px;
+            color: rgba(255,255,255,0.65);
+            font-size: 15px;
+        }
+        .cta-section__contact a {
+            color: var(--yellow);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            padding: 40px 0;
+            background: var(--teal);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer__inner { display: flex; justify-content: space-between; align-items: center; }
+        .footer__left { color: rgba(255,255,255,0.7); font-size: 14px; }
+        .footer__left a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .footer__left a:hover { color: var(--white); }
+        .footer__blogs {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+            font-size: 13px;
+        }
+        .footer__socials { display: flex; gap: 16px; }
+        .footer__socials a {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .footer__socials a:hover { background: rgba(255,255,255,0.2); }
+        .footer__socials svg { width: 18px; height: 18px; fill: var(--white); }
+
+        /* ===== Mobile ===== */
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            .hero { padding: 80px 0 60px; }
+            .hero__details { flex-direction: column; gap: 16px; }
+
+            .about__inner {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                text-align: center;
+            }
+            .about__photo { width: 180px; }
+            .about__highlight { text-align: left; }
+
+            .format-cards,
+            .topics-grid,
+            .results__grid,
+            .outcomes-list,
+            .reviews-grid { grid-template-columns: 1fr; }
+
+            .logistics__grid { grid-template-columns: 1fr 1fr; }
+
+            .schedule-item { grid-template-columns: 1fr; gap: 4px; }
+
+            .footer__inner { flex-direction: column; gap: 20px; text-align: center; }
+            .footer__blogs { justify-content: center; }
+
+            .cta-btn { padding: 14px 32px; font-size: 16px; }
+            .cta-section .cta-btn { padding: 16px 40px; }
+
+            .scenario-card { padding: 24px; }
+        }
+        @media (max-width: 480px) {
+            .logistics__grid { grid-template-columns: 1fr; }
+            .roles-list { gap: 8px; }
+            .roles-list li { font-size: 14px; padding: 8px 16px; }
+            .faq-question { font-size: 16px; padding-right: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero__tag">Группа для слэш-карьеристов</span>
+            <h1>Для тех, кто совмещает в&nbsp;карьере разные роли и&nbsp;проекты</h1>
+            <a href="https://forms.gle/ntHtx5DfzfXLnv59A" class="cta-btn" target="_blank" rel="noopener">Записаться</a>
+            <div class="hero__details">
+                <div class="hero__detail">
+                    <div class="hero__detail-icon" style="background: var(--lavender-light);">&#128197;</div>
+                    <span>7 встреч за 7&nbsp;недель</span>
+                </div>
+                <div class="hero__detail">
+                    <div class="hero__detail-icon" style="background: var(--coral-light);">&#128101;</div>
+                    <span>до 6 участников</span>
+                </div>
+                <div class="hero__detail">
+                    <div class="hero__detail-icon" style="background: var(--pink-light);">&#128172;</div>
+                    <span>16 февраля &mdash; 29 марта</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT HOST ===== -->
+    <section class="about">
+        <div class="container">
+            <div class="about__inner">
+                <div class="about__photo">
+                    <img src="Your paragraph text-6.jpg" alt="Таня Мажутис">
+                </div>
+                <div class="about__text">
+                    <div class="about__name">Группу ведёт</div>
+                    <h2 style="margin-bottom:16px;">Таня Мажутис</h2>
+                    <p>Слэш-карьеристка: коуч / кофаундер LinkedInBesties / блогер и&nbsp;надеюсь в&nbsp;скором времени записать ещё себе &laquo;автор подкаста&raquo; и&nbsp;&laquo;создатель чат-бота, который зарабатывает 10&nbsp;000 евро&raquo;.</p>
+                    <p>Если для тебя слово &laquo;слэш-карьера&raquo; новое, то&nbsp;прочитай этот пост и&nbsp;мою статью &laquo;почему люди совмещают разные карьеры&raquo;.</p>
+                    <div class="about__highlight">
+                        В&nbsp;2024 году закончила курс по&nbsp;модерации групп от&nbsp;Mastermindgroups. Провела 6&nbsp;групп по&nbsp;LinkedIn, вела практики на&nbsp;3&nbsp;потоках курса по&nbsp;перепридумыванию карьеры Оли Полищук и&nbsp;год работала в&nbsp;школе коучинга 5&nbsp;Prism.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOR WHOM ===== -->
+    <section class="for-whom">
+        <div class="container">
+            <h2>Для кого</h2>
+            <p class="for-whom__intro">Ты уже совмещаешь несколько вещей одновременно:</p>
+            <ul class="roles-list">
+                <li>Работаешь в&nbsp;компании + свой проект</li>
+                <li>Работаешь в&nbsp;найме + консультируешь</li>
+                <li>Работаешь в&nbsp;fractional-формате</li>
+                <li>Жонглируешь 2-3 проектами сразу</li>
+            </ul>
+
+            <h3 style="margin-bottom: 24px;">И&nbsp;ощущаешь:</h3>
+            <div class="pain-points">
+                <div class="pain-point">
+                    <span class="pain-point__arrow">&rarr;</span>
+                    <div>
+                        <div class="pain-point__title">Расфокус</div>
+                        <p class="pain-point__text">Не&nbsp;понятно, на&nbsp;чём сфокусироваться, всё кажется важным</p>
+                    </div>
+                </div>
+                <div class="pain-point">
+                    <span class="pain-point__arrow">&rarr;</span>
+                    <div>
+                        <div class="pain-point__title">Тревогу про деньги</div>
+                        <p class="pain-point__text">Не&nbsp;знаешь, как планировать, когда доход прыгает</p>
+                    </div>
+                </div>
+                <div class="pain-point">
+                    <span class="pain-point__arrow">&rarr;</span>
+                    <div>
+                        <div class="pain-point__title">Одиночество</div>
+                        <p class="pain-point__text">Нет людей вокруг, которые делают так&nbsp;же. Все либо в&nbsp;найме, либо уже большие предприниматели, а&nbsp;ты где-то между</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCENARIOS ===== -->
+    <section class="scenarios">
+        <div class="container">
+            <h2>Это про тебя, если:</h2>
+            <div class="scenario-card">
+                <h3>Ты работаешь в&nbsp;компании + у&nbsp;тебя свой проект</h3>
+                <p>Может быть, ты в&nbsp;найме full-time или part-time и&nbsp;параллельно делаешь что-то своё — запускаешь продукт, консультируешь, ведёшь канал. Проект уже приносит деньги (пусть пока небольшие), но&nbsp;нет готовности бросить основную работу. И&nbsp;вопросов куча: как долго так можно? Как балансировать? Когда пора выбирать?</p>
+            </div>
+            <div class="scenario-card">
+                <h3>Ты где-то между наймом и&nbsp;предпринимательством</h3>
+                <p>Ты уже не&nbsp;совсем в&nbsp;найме (работаешь fractional, part-time или сразу на&nbsp;нескольких проектах), но&nbsp;и&nbsp;не&nbsp;предприниматель с&nbsp;офисом и&nbsp;командой. Ты как будто между двух миров. Друзья в&nbsp;найме не&nbsp;понимают: &laquo;Когда уже найдёшь нормальную работу?&raquo; А&nbsp;друзья-предприниматели удивляются: &laquo;Почему ты до&nbsp;сих пор на&nbsp;кого-то работаешь?&raquo; И&nbsp;хочется найти людей, которые просто поймут.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FORMAT ===== -->
+    <section class="format">
+        <div class="container">
+            <h2>Что будет</h2>
+            <p style="color: var(--text-light); margin-bottom: 8px;">Объединение двух групповых форматов — мастермайнд, когда мы думаем друг об&nbsp;друга и&nbsp;вместе ищем ответы, и&nbsp;онлайн-коворкинги, когда мы делаем.</p>
+            <div class="format-cards">
+                <div class="format-card">
+                    <div class="format-card__icon" style="background: var(--coral-light);">&#128483;</div>
+                    <h3>Мастермайнды</h3>
+                    <p>Встречаемся, обсуждаем твои ситуации, делимся опытом, поддерживаем друг друга. Без советов в&nbsp;стиле &laquo;вот тебе решение&raquo; — мы вместе думаем.</p>
+                    <p style="margin-top: 12px; font-weight: 700;">5 встреч</p>
+                </div>
+                <div class="format-card">
+                    <div class="format-card__icon" style="background: var(--lavender-light);">&#128187;</div>
+                    <h3>Онлайн-коворкинги</h3>
+                    <p>Встречаемся на&nbsp;час, работаем каждый над своей задачей, но&nbsp;вместе. Делаем то, что откладывали.</p>
+                    <p style="margin-top: 12px; font-weight: 700;">2 встречи</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCHEDULE ===== -->
+    <section class="schedule">
+        <div class="container">
+            <h2>Расписание</h2>
+            <p style="color: var(--text-light); margin-bottom: 32px;">Встречаемся по&nbsp;понедельникам. Время: 19:00 МСК / 16:00 WET</p>
+            <ul class="schedule-list">
+                <li class="schedule-item">
+                    <div class="schedule-date">16 февраля<span>1,5 часа</span></div>
+                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Знакомство,</strong> обсуждение принципов группы, планирование</div>
+                </li>
+                <li class="schedule-item">
+                    <div class="schedule-date">23 февраля<span>2 часа</span></div>
+                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Разбор запросов</strong> участников</div>
+                </li>
+                <li class="schedule-item">
+                    <div class="schedule-date">2 марта<span>2 часа</span></div>
+                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Разбор запросов</strong> участников</div>
+                </li>
+                <li class="schedule-item">
+                    <div class="schedule-date">9 марта<span>1 час</span></div>
+                    <div class="schedule-info"><span class="schedule-badge schedule-badge--cw">коворкинг</span> Работаем каждый над своим, но&nbsp;вместе</div>
+                </li>
+                <li class="schedule-item">
+                    <div class="schedule-date">16 марта<span>2 часа</span></div>
+                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Разбор запросов</strong> участников</div>
+                </li>
+                <li class="schedule-item">
+                    <div class="schedule-date">23 марта<span>1 час</span></div>
+                    <div class="schedule-info"><span class="schedule-badge schedule-badge--cw">коворкинг</span> Работаем каждый над своим, но&nbsp;вместе</div>
+                </li>
+                <li class="schedule-item">
+                    <div class="schedule-date">30 марта<span>2 часа</span></div>
+                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Подведение итогов</strong> и&nbsp;фокусировка на&nbsp;будущее</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== TOPICS ===== -->
+    <section class="topics">
+        <div class="container">
+            <h2>Фокусные темы группы</h2>
+            <div class="topics-grid">
+                <div class="topic-block">
+                    <h3>Фокус и&nbsp;приоритеты</h3>
+                    <ul>
+                        <li>Как понять, на&nbsp;чём сфокусироваться, когда всё важное?</li>
+                        <li>Как выбрать 2-3 направления и&nbsp;не&nbsp;распыляться?</li>
+                        <li>Как собрать всё, что я&nbsp;делаю, в&nbsp;одну картинку?</li>
+                        <li>Как понять, что оставить, а&nbsp;от&nbsp;чего отказаться?</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3>Деньги и&nbsp;устойчивость</h3>
+                    <ul>
+                        <li>Как планировать доход, когда он&nbsp;нестабильный?</li>
+                        <li>Сколько мне вообще нужно, чтобы было спокойно?</li>
+                        <li>Как создать финансовую подушку?</li>
+                        <li>Откуда брать деньги: из&nbsp;всех проектов понемногу или один сделать основным?</li>
+                        <li>Как не&nbsp;бояться, что потеряю один источник дохода?</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3>Окружение</h3>
+                    <ul>
+                        <li>Где найти людей, которые делают то&nbsp;же самое?</li>
+                        <li>Как не&nbsp;чувствовать себя &laquo;не&nbsp;рыба, не&nbsp;мясо&raquo;?</li>
+                        <li>С&nbsp;кем делиться радостями и&nbsp;трудностями?</li>
+                        <li>Как рассказывать другим, чем я&nbsp;занимаюсь, чтобы не&nbsp;выглядело странно?</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3>Интеграция и&nbsp;идентичность</h3>
+                    <ul>
+                        <li>Как связать разные проекты в&nbsp;одну историю?</li>
+                        <li>Как не&nbsp;чувствовать себя &laquo;мастером на&nbsp;все руки&raquo;?</li>
+                        <li>Как не&nbsp;ощущать, что я&nbsp;разрываюсь между мирами?</li>
+                        <li>Кто я&nbsp;вообще: фрилансер? консультант? эксперт? предприниматель?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OUTCOMES ===== -->
+    <section class="outcomes">
+        <div class="container">
+            <h2>Что может измениться через 1,5&nbsp;месяца</h2>
+            <p class="outcomes__subtitle">Это зависит от&nbsp;тебя: с&nbsp;каким запросом приходишь, как работаешь между встречами, насколько готов(-а) к&nbsp;изменениям. Ты можешь:</p>
+            <ul class="outcomes-list">
+                <li>Прояснить, на&nbsp;чём фокусироваться</li>
+                <li>Сделать план финансовой устойчивости</li>
+                <li>Найти своих людей</li>
+                <li>Собрать свою историю воедино</li>
+            </ul>
+            <div class="outcomes__note">
+                Это мастермайнд, а&nbsp;не&nbsp;курс с&nbsp;готовой программой и&nbsp;гарантированным результатом. Мы работаем с&nbsp;тем, что важно для тебя.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHAT YOU GET ===== -->
+    <section class="results">
+        <div class="container">
+            <h2>Что ты получишь</h2>
+            <div class="results__grid">
+                <div class="result-card">
+                    <h3>7 встреч</h3>
+                    <p>5 мастермайндов (обсуждаем) + 2&nbsp;коворкинга (делаем)</p>
+                </div>
+                <div class="result-card">
+                    <h3>До 6 единомышленников</h3>
+                    <p>Сообщество слэш-карьеристов — люди, которые поймут тебя с&nbsp;полуслова</p>
+                </div>
+                <div class="result-card">
+                    <h3>Чат в&nbsp;Telegram</h3>
+                    <p>Можно спросить что-то между встречами, поделиться, получить поддержку</p>
+                </div>
+                <div class="result-card">
+                    <h3>Приглашённые эксперты</h3>
+                    <p>Если запросы участников повторяются, приглашу экспертов, которые помогут разобраться</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REVIEWS ===== -->
+    <section class="reviews">
+        <div class="container">
+            <h2>Отзывы о&nbsp;моей работе</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <p class="review-card__text">Я&nbsp;заметила устойчивую тенденцию работы с&nbsp;тобой: легко, свежо, динамично к&nbsp;результату — очень ценю это. У&nbsp;меня есть общий отклик по&nbsp;целям девушек: они удивительно реалистичны, я&nbsp;вижу, что вы их достигните.</p>
+                    <p class="review-card__author">Участник мастермайнда</p>
+                </div>
+                <div class="review-card">
+                    <p class="review-card__text">Таня, благодарю тебя за&nbsp;ёмкий и&nbsp;продвигающий процесс. Таня мастерски создаёт пространство доверия и&nbsp;внимания к&nbsp;каждому участнику, тонко и&nbsp;раскрывающе формулирует вопросы и&nbsp;ювелирно держит тайминг.</p>
+                    <p class="review-card__author">Участница мастермайнда</p>
+                </div>
+            </div>
+            <div class="reviews__more">
+                <a href="http://www.linkedin.com/in/mazhutis" target="_blank" rel="noopener">Другие отзывы в&nbsp;LinkedIn &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LOGISTICS & PRICE ===== -->
+    <section class="logistics">
+        <div class="container">
+            <h2 style="text-align:center;">Коротко и&nbsp;по&nbsp;делу</h2>
+            <div class="logistics__grid">
+                <div class="logistics__item">
+                    <div class="logistics__value">6</div>
+                    <div class="logistics__label">участников</div>
+                </div>
+                <div class="logistics__item">
+                    <div class="logistics__value">7</div>
+                    <div class="logistics__label">недель</div>
+                </div>
+                <div class="logistics__item">
+                    <div class="logistics__value">ПН</div>
+                    <div class="logistics__label">19:00 МСК</div>
+                </div>
+                <div class="logistics__item">
+                    <div class="logistics__value">16.02</div>
+                    <div class="logistics__label">старт</div>
+                </div>
+            </div>
+            <div class="logistics__price">
+                <div class="logistics__price-value">250&euro;</div>
+                <div class="logistics__price-alt">/ 25&nbsp;000&nbsp;&#8381;</div>
+                <div class="logistics__price-period">за 7 недель</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" id="signup">
+        <div class="container">
+            <h2>Хочешь стать частью группы?</h2>
+            <p>Заполни форму, мы с&nbsp;тобой созвонимся и&nbsp;обсудим, подходит&nbsp;ли тебе группа, отвечу на&nbsp;вопросы.</p>
+            <a href="https://forms.gle/ntHtx5DfzfXLnv59A" class="cta-btn" target="_blank" rel="noopener">Заполнить форму</a>
+            <p class="cta-section__contact">Или напиши напрямую в&nbsp;Telegram: <a href="https://t.me/mazhutis" target="_blank" rel="noopener">@mazhutis</a></p>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq">
+        <div class="container">
+            <h2>Частые вопросы</h2>
+            <ul class="faq-list">
+                <li class="faq-item">
+                    <button class="faq-question">Можно ли пропускать встречи?</button>
+                    <div class="faq-answer"><div class="faq-answer__inner">
+                        Если мы договариваемся об&nbsp;участии в&nbsp;группе, то&nbsp;коммитимся на&nbsp;то, что все мастермайнд-встречи ты сможешь посетить. Онлайн-коворкинги пропускать можно.
+                    </div></div>
+                </li>
+                <li class="faq-item">
+                    <button class="faq-question">Почему ты делаешь группу по&nbsp;слэш-карьере?</button>
+                    <div class="faq-answer"><div class="faq-answer__inner">
+                        Во-первых, я&nbsp;себя ощущаю слэш-карьеристкой и&nbsp;не&nbsp;готова выбирать что-то одно. А&nbsp;во-вторых, последний год я&nbsp;изучаю тему слэш-карьеры — провела 30+ интервью с&nbsp;людьми, которые совмещают. И&nbsp;поняла: это моя тема.
+                    </div></div>
+                </li>
+                <li class="faq-item">
+                    <button class="faq-question">Ты училась модерации групп?</button>
+                    <div class="faq-answer"><div class="faq-answer__inner">
+                        Да, в&nbsp;2024 году я&nbsp;закончила курс по&nbsp;модерации групп от&nbsp;Mastermindgroups. И&nbsp;у&nbsp;меня за&nbsp;это время было много практики: провела 6&nbsp;групп по&nbsp;LinkedIn, вела практики на&nbsp;3&nbsp;потоках курса по&nbsp;перепридумыванию карьеры Оли Полищук и&nbsp;год работала в&nbsp;школе коучинга 5&nbsp;Prism.
+                    </div></div>
+                </li>
+                <li class="faq-item">
+                    <button class="faq-question">Мне неудобно время встреч, можно подвинуть?</button>
+                    <div class="faq-answer"><div class="faq-answer__inner">
+                        Да, если желание есть, но&nbsp;никак не&nbsp;получается — напиши мне, попробуем найти всей группой другое время.
+                    </div></div>
+                </li>
+                <li class="faq-item">
+                    <button class="faq-question">Кому эта группа не&nbsp;подойдёт?</button>
+                    <div class="faq-answer"><div class="faq-answer__inner">
+                        <ul style="margin:0; padding-left:1.2em;">
+                            <li>Ты пока только думаешь о&nbsp;втором проекте, но&nbsp;ещё не&nbsp;начала</li>
+                            <li>Ты в&nbsp;поиске: &laquo;Чем я&nbsp;вообще хочу заниматься?&raquo;</li>
+                            <li>Ты в&nbsp;выгорании и&nbsp;нужна пауза, а&nbsp;не&nbsp;проекты</li>
+                        </ul>
+                    </div></div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__left">
+                    <div>&copy; Таня Мажутис</div>
+                </div>
+                <div class="footer__socials">
+                    <a href="https://t.me/+R1d6RQGd14AzZjNi" target="_blank" rel="noopener" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                    <a href="http://instagram.com/slashcareers" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 1 0 0-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 1 1-2.88 0 1.441 1.441 0 0 1 2.88 0z"/></svg>
+                    </a>
+                    <a href="http://www.linkedin.com/in/mazhutis" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
