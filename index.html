@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мастермайнд для слэш-карьеристов — Таня Мажутис</title>
-    <meta name="description" content="Мастермайнд-группа для тех, кто совмещает несколько проектов. 7 встреч за 7 недель. Модератор — Таня Мажутис.">
+    <meta name="description" content="Группа поддержки для тех, кто совмещает несколько проектов. 5 мастермайндов + 4 коворкинга за 4 недели. Модератор — Таня Мажутис.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
@@ -361,36 +361,91 @@
         .format-card h3 { margin-bottom: 8px; }
         .format-card p { color: var(--text-light); font-size: 15px; }
 
-        /* ===== Schedule ===== */
+        /* ===== Schedule / Calendar ===== */
         .schedule { background: var(--white); }
-        .schedule-list { list-style: none; }
-        .schedule-item {
+        .calendar { border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm); }
+        .calendar__header {
             display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 20px;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            align-items: start;
-            transition: padding-left 0.3s ease;
-        }
-        .schedule-item:hover { padding-left: 8px; }
-        .schedule-item:last-child { border-bottom: none; }
-        .schedule-date {
+            grid-template-columns: repeat(7, 1fr);
+            background: var(--teal);
+            color: var(--white);
             font-family: 'Unbounded', sans-serif;
+            font-size: 12px;
             font-weight: 700;
-            color: var(--teal);
+            text-align: center;
+        }
+        .calendar__header span { padding: 14px 4px; }
+        .calendar__body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: var(--white);
+        }
+        .calendar__day {
+            padding: 10px 6px;
+            text-align: center;
             font-size: 14px;
-        }
-        .schedule-date span {
-            display: block;
-            font-family: 'Manrope', sans-serif;
-            font-weight: 400;
             color: var(--text-light);
-            font-size: 13px;
-            margin-top: 2px;
+            border: 1px solid rgba(0,0,0,0.04);
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s ease;
         }
-        .schedule-info { font-size: 15px; color: var(--text-light); }
-        .schedule-info strong { color: var(--text); }
+        .calendar__day--empty { background: #fafafa; }
+        .calendar__day--mm {
+            background: var(--coral-light);
+            color: var(--text);
+            font-weight: 700;
+            cursor: default;
+        }
+        .calendar__day--mm:hover { background: #ffd1c2; }
+        .calendar__day--cw {
+            background: var(--lavender-light);
+            color: var(--text);
+            font-weight: 700;
+            cursor: default;
+        }
+        .calendar__day--cw:hover { background: #cdd6ff; }
+        .calendar__day-num {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .calendar__day-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            line-height: 1.2;
+        }
+        .calendar__legend {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+            flex-wrap: wrap;
+        }
+        .calendar__legend-item { display: flex; align-items: center; gap: 8px; }
+        .calendar__legend-dot {
+            width: 14px; height: 14px;
+            border-radius: 4px;
+        }
+        .calendar__legend-dot--mm { background: var(--coral-light); }
+        .calendar__legend-dot--cw { background: var(--lavender-light); }
+        .schedule-details { margin-top: 32px; }
+        .schedule-details__item {
+            display: flex;
+            gap: 12px;
+            align-items: start;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 15px;
+            color: var(--text-light);
+        }
+        .schedule-details__item:last-child { border-bottom: none; }
         .schedule-badge {
             display: inline-block;
             font-family: 'Unbounded', sans-serif;
@@ -398,7 +453,7 @@
             font-weight: 700;
             padding: 3px 12px;
             border-radius: 20px;
-            margin-right: 8px;
+            flex-shrink: 0;
             letter-spacing: 0.02em;
         }
         .schedule-badge--mm { background: var(--coral-light); color: var(--coral); }
@@ -877,7 +932,10 @@
 
             .logistics__grid { grid-template-columns: 1fr 1fr; }
 
-            .schedule-item { grid-template-columns: 1fr; gap: 4px; }
+            .calendar__day { min-height: 60px; padding: 8px 4px; }
+            .calendar__day-num { font-size: 14px; }
+            .calendar__day-label { font-size: 8px; }
+            .calendar__header span { padding: 10px 2px; font-size: 10px; }
 
             .footer__inner { flex-direction: column; gap: 20px; text-align: center; }
             .footer__blogs { justify-content: center; }
@@ -902,13 +960,13 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="container">
-            <span class="hero__tag">Группа для слэш-карьеристов</span>
+            <span class="hero__tag">Группа поддержки для слэш-карьеристов</span>
             <h1>Для тех, кто совмещает в&nbsp;карьере разные роли и&nbsp;проекты</h1>
             <a href="https://forms.gle/ntHtx5DfzfXLnv59A" class="cta-btn" target="_blank" rel="noopener">Записаться</a>
             <div class="hero__details">
                 <div class="hero__detail">
                     <div class="hero__detail-icon" style="background: var(--lavender-light);">&#128197;</div>
-                    <span>7 встреч за 7&nbsp;недель</span>
+                    <span>9 встреч за 4&nbsp;недели</span>
                 </div>
                 <div class="hero__detail">
                     <div class="hero__detail-icon" style="background: var(--coral-light);">&#128101;</div>
@@ -916,27 +974,7 @@
                 </div>
                 <div class="hero__detail">
                     <div class="hero__detail-icon" style="background: var(--pink-light);">&#128172;</div>
-                    <span>16 февраля &mdash; 29 марта</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== ABOUT HOST ===== -->
-    <section class="about">
-        <div class="container">
-            <div class="about__inner reveal">
-                <div class="about__photo">
-                    <img src="Your paragraph text-8.jpg" alt="Таня Мажутис">
-                </div>
-                <div class="about__text">
-                    <div class="about__name">Группу ведёт</div>
-                    <h2 style="margin-bottom:16px;">Таня Мажутис</h2>
-                    <p>Слэш-карьеристка: коуч / кофаундер LinkedInBesties / блогер и&nbsp;надеюсь в&nbsp;скором времени записать ещё себе &laquo;автор подкаста&raquo; и&nbsp;&laquo;создатель чат-бота, который зарабатывает 10&nbsp;000 евро&raquo;.</p>
-                    <p>Если для тебя слово &laquo;слэш-карьера&raquo; новое, то&nbsp;прочитай этот пост и&nbsp;мою статью &laquo;почему люди совмещают разные карьеры&raquo;.</p>
-                    <div class="about__highlight">
-                        В&nbsp;2024 году закончила курс по&nbsp;модерации групп от&nbsp;Mastermindgroups. Провела 6&nbsp;групп по&nbsp;LinkedIn, вела практики на&nbsp;3&nbsp;потоках курса по&nbsp;перепридумыванию карьеры Оли Полищук и&nbsp;год работала в&nbsp;школе коучинга 5&nbsp;Prism.
-                    </div>
+                    <span>2 марта &mdash; 31 марта</span>
                 </div>
             </div>
         </div>
@@ -996,6 +1034,26 @@
         </div>
     </section>
 
+    <!-- ===== ABOUT HOST ===== -->
+    <section class="about">
+        <div class="container">
+            <div class="about__inner reveal">
+                <div class="about__photo">
+                    <img src="Your paragraph text-8.jpg" alt="Таня Мажутис">
+                </div>
+                <div class="about__text">
+                    <div class="about__name">Группу ведёт</div>
+                    <h2 style="margin-bottom:16px;">Таня Мажутис</h2>
+                    <p>Слэш-карьеристка: коуч / кофаундер LinkedInBesties / блогер и&nbsp;надеюсь в&nbsp;скором времени записать ещё себе &laquo;автор подкаста&raquo; и&nbsp;&laquo;создатель чат-бота, который зарабатывает 10&nbsp;000 евро&raquo;.</p>
+                    <p>Если для тебя слово &laquo;слэш-карьера&raquo; новое, то&nbsp;прочитай этот пост и&nbsp;мою статью &laquo;почему люди совмещают разные карьеры&raquo;.</p>
+                    <div class="about__highlight">
+                        В&nbsp;2024 году закончила курс по&nbsp;модерации групп от&nbsp;Mastermindgroups. Провела 6&nbsp;групп по&nbsp;LinkedIn, вела практики на&nbsp;3&nbsp;потоках курса по&nbsp;перепридумыванию карьеры Оли Полищук и&nbsp;год работала в&nbsp;школе коучинга 5&nbsp;Prism.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== FORMAT ===== -->
     <section class="format">
         <div class="container">
@@ -1006,13 +1064,13 @@
                     <div class="format-card__icon" style="background: var(--coral-light);">&#128483;</div>
                     <h3>Мастермайнды</h3>
                     <p>Встречаемся, обсуждаем твои ситуации, делимся опытом, поддерживаем друг друга. Без советов в&nbsp;стиле &laquo;вот тебе решение&raquo; — мы вместе думаем.</p>
-                    <p style="margin-top: 12px; font-weight: 700;">5 встреч</p>
+                    <p style="margin-top: 12px; font-weight: 700;">5 встреч (обязательные)</p>
                 </div>
                 <div class="format-card">
                     <div class="format-card__icon" style="background: var(--lavender-light);">&#128187;</div>
                     <h3>Онлайн-коворкинги</h3>
                     <p>Встречаемся на&nbsp;час, работаем каждый над своей задачей, но&nbsp;вместе. Делаем то, что откладывали.</p>
-                    <p style="margin-top: 12px; font-weight: 700;">2 встречи</p>
+                    <p style="margin-top: 12px; font-weight: 700;">4 встречи (по&nbsp;желанию)</p>
                 </div>
             </div>
         </div>
@@ -1022,37 +1080,85 @@
     <section class="schedule">
         <div class="container">
             <h2 class="reveal">Расписание</h2>
-            <p class="reveal" style="color: var(--text-light); margin-bottom: 32px;">Встречаемся по&nbsp;понедельникам. Время: 19:00 МСК / 16:00 WET</p>
-            <ul class="schedule-list stagger">
-                <li class="schedule-item">
-                    <div class="schedule-date">16 февраля<span>1,5 часа</span></div>
-                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Знакомство,</strong> обсуждение принципов группы, планирование</div>
-                </li>
-                <li class="schedule-item">
-                    <div class="schedule-date">23 февраля<span>2 часа</span></div>
-                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Разбор запросов</strong> участников</div>
-                </li>
-                <li class="schedule-item">
-                    <div class="schedule-date">2 марта<span>2 часа</span></div>
-                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Разбор запросов</strong> участников</div>
-                </li>
-                <li class="schedule-item">
-                    <div class="schedule-date">9 марта<span>1 час</span></div>
-                    <div class="schedule-info"><span class="schedule-badge schedule-badge--cw">коворкинг</span> Работаем каждый над своим, но&nbsp;вместе</div>
-                </li>
-                <li class="schedule-item">
-                    <div class="schedule-date">16 марта<span>2 часа</span></div>
-                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Разбор запросов</strong> участников</div>
-                </li>
-                <li class="schedule-item">
-                    <div class="schedule-date">23 марта<span>1 час</span></div>
-                    <div class="schedule-info"><span class="schedule-badge schedule-badge--cw">коворкинг</span> Работаем каждый над своим, но&nbsp;вместе</div>
-                </li>
-                <li class="schedule-item">
-                    <div class="schedule-date">30 марта<span>2 часа</span></div>
-                    <div class="schedule-info"><span class="schedule-badge schedule-badge--mm">мастермайнд</span> <strong>Подведение итогов</strong> и&nbsp;фокусировка на&nbsp;будущее</div>
-                </li>
-            </ul>
+            <p class="reveal" style="color: var(--text-light); margin-bottom: 32px;">Мастермайнды по&nbsp;понедельникам, коворкинги по&nbsp;четвергам. Время: 19:00 МСК / 16:00 WET</p>
+
+            <div class="calendar reveal-scale">
+                <div class="calendar__header">
+                    <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
+                </div>
+                <div class="calendar__body">
+                    <!-- Неделя 1: 2–8 марта -->
+                    <div class="calendar__day calendar__day--mm"><span class="calendar__day-num">2</span><span class="calendar__day-label">Знакомство</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">3</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">4</span></div>
+                    <div class="calendar__day calendar__day--cw"><span class="calendar__day-num">5</span><span class="calendar__day-label">Коворкинг</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">6</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">7</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">8</span></div>
+                    <!-- Неделя 2: 9–15 марта -->
+                    <div class="calendar__day calendar__day--mm"><span class="calendar__day-num">9</span><span class="calendar__day-label">Мастер-майнд</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">10</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">11</span></div>
+                    <div class="calendar__day calendar__day--cw"><span class="calendar__day-num">12</span><span class="calendar__day-label">Коворкинг</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">13</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">14</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">15</span></div>
+                    <!-- Неделя 3: 16–22 марта -->
+                    <div class="calendar__day calendar__day--mm"><span class="calendar__day-num">16</span><span class="calendar__day-label">Мастер-майнд</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">17</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">18</span></div>
+                    <div class="calendar__day calendar__day--cw"><span class="calendar__day-num">19</span><span class="calendar__day-label">Коворкинг</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">20</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">21</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">22</span></div>
+                    <!-- Неделя 4: 23–29 марта -->
+                    <div class="calendar__day calendar__day--mm"><span class="calendar__day-num">23</span><span class="calendar__day-label">Мастер-майнд</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">24</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">25</span></div>
+                    <div class="calendar__day calendar__day--cw"><span class="calendar__day-num">26</span><span class="calendar__day-label">Коворкинг</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">27</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">28</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">29</span></div>
+                    <!-- Неделя 5: 30–31 марта -->
+                    <div class="calendar__day calendar__day--mm"><span class="calendar__day-num">30</span><span class="calendar__day-label">Итоги</span></div>
+                    <div class="calendar__day"><span class="calendar__day-num">31</span></div>
+                    <div class="calendar__day calendar__day--empty"></div>
+                    <div class="calendar__day calendar__day--empty"></div>
+                    <div class="calendar__day calendar__day--empty"></div>
+                    <div class="calendar__day calendar__day--empty"></div>
+                    <div class="calendar__day calendar__day--empty"></div>
+                </div>
+            </div>
+
+            <div class="calendar__legend reveal">
+                <div class="calendar__legend-item">
+                    <div class="calendar__legend-dot calendar__legend-dot--mm"></div>
+                    <span>Мастермайнд (ПН) — обязательно</span>
+                </div>
+                <div class="calendar__legend-item">
+                    <div class="calendar__legend-dot calendar__legend-dot--cw"></div>
+                    <span>Онлайн-коворкинг (ЧТ) — по&nbsp;желанию</span>
+                </div>
+            </div>
+
+            <div class="schedule-details reveal">
+                <div class="schedule-details__item">
+                    <span class="schedule-badge schedule-badge--mm">2 марта</span>
+                    <span><strong>Знакомство,</strong> обсуждение принципов группы, планирование</span>
+                </div>
+                <div class="schedule-details__item">
+                    <span class="schedule-badge schedule-badge--mm">9, 16, 23 марта</span>
+                    <span><strong>Мастермайнды</strong> — разбор запросов участников</span>
+                </div>
+                <div class="schedule-details__item">
+                    <span class="schedule-badge schedule-badge--mm">30 марта</span>
+                    <span><strong>Подведение итогов</strong> и&nbsp;фокусировка на&nbsp;будущее</span>
+                </div>
+                <div class="schedule-details__item">
+                    <span class="schedule-badge schedule-badge--cw">5, 12, 19, 26 марта</span>
+                    <span><strong>Онлайн-коворкинги</strong> — работаем каждый над своим, но&nbsp;вместе</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1105,7 +1211,7 @@
     <!-- ===== OUTCOMES ===== -->
     <section class="outcomes">
         <div class="container">
-            <h2 class="reveal">Что может измениться через 1,5&nbsp;месяца</h2>
+            <h2 class="reveal">Что может измениться через месяц</h2>
             <p class="outcomes__subtitle reveal">Это зависит от&nbsp;тебя: с&nbsp;каким запросом приходишь, как работаешь между встречами, насколько готов(-а) к&nbsp;изменениям. Ты можешь:</p>
             <ul class="outcomes-list stagger">
                 <li>Прояснить, на&nbsp;чём фокусироваться</li>
@@ -1125,8 +1231,8 @@
             <h2 class="reveal">Что ты получишь</h2>
             <div class="results__grid stagger">
                 <div class="result-card">
-                    <h3>7 встреч</h3>
-                    <p>5 мастермайндов (обсуждаем) + 2&nbsp;коворкинга (делаем)</p>
+                    <h3>9 встреч</h3>
+                    <p>5 мастермайндов (обсуждаем) + 4&nbsp;коворкинга (делаем)</p>
                 </div>
                 <div class="result-card">
                     <h3>До 6 единомышленников</h3>
@@ -1174,22 +1280,22 @@
                     <div class="logistics__label">участников</div>
                 </div>
                 <div class="logistics__item">
-                    <div class="logistics__value">7</div>
-                    <div class="logistics__label">недель</div>
+                    <div class="logistics__value">4</div>
+                    <div class="logistics__label">недели</div>
                 </div>
                 <div class="logistics__item">
-                    <div class="logistics__value">ПН</div>
+                    <div class="logistics__value">ПН+ЧТ</div>
                     <div class="logistics__label">19:00 МСК</div>
                 </div>
                 <div class="logistics__item">
-                    <div class="logistics__value">16.02</div>
+                    <div class="logistics__value">02.03</div>
                     <div class="logistics__label">старт</div>
                 </div>
             </div>
             <div class="logistics__price reveal-scale">
                 <div class="logistics__price-value">250&euro;</div>
                 <div class="logistics__price-alt">/ 25&nbsp;000&nbsp;&#8381;</div>
-                <div class="logistics__price-period">за 7 недель</div>
+                <div class="logistics__price-period">за 4 недели</div>
             </div>
         </div>
     </section>
