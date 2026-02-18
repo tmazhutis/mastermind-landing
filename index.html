@@ -733,6 +733,7 @@
 
         /* ===== Promo banner ===== */
         .promo-banner {
+            display: block;
             background: var(--coral);
             color: var(--white);
             text-align: center;
@@ -746,6 +747,8 @@
             left: 0;
             right: 0;
             z-index: 100;
+            text-decoration: none;
+            cursor: pointer;
         }
         .promo-banner a {
             color: var(--white);
@@ -1013,9 +1016,9 @@
 <body>
 
     <!-- ===== PROMO BANNER ===== -->
-    <div class="promo-banner">
+    <a href="#price" class="promo-banner">
         Скидка при оплате до&nbsp;22&nbsp;февраля
-    </div>
+    </a>
 
     <!-- ===== HERO ===== -->
     <section class="hero" style="padding-top: 180px;">
@@ -1276,7 +1279,7 @@
     </section>
 
     <!-- ===== LOGISTICS & PRICE ===== -->
-    <section class="logistics">
+    <section class="logistics" id="price">
         <div class="container">
             <h2 class="reveal" style="text-align:center;">Коротко и&nbsp;по&nbsp;делу</h2>
             <div class="logistics__grid stagger">
