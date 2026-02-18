@@ -686,6 +686,18 @@
         }
         .logistics__label { font-size: 13px; color: var(--text-light); }
         .logistics__price { text-align: center; margin-top: 24px; }
+        .logistics__pricing-rows { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+        .logistics__pricing-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .logistics__pricing-label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
         .logistics__price-value {
             font-family: 'Unbounded', sans-serif;
             font-size: clamp(32px, 5vw, 44px);
@@ -695,8 +707,51 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        .logistics__price-value--early {
+            font-family: 'Unbounded', sans-serif;
+            font-size: clamp(32px, 5vw, 44px);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--teal) 0%, #007a80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         .logistics__price-alt { font-size: 18px; color: var(--text-light); }
+        .logistics__price-alt--early { font-size: 18px; color: var(--text-light); }
         .logistics__price-period { font-size: 16px; color: var(--text-light); margin-bottom: 0; }
+        .logistics__pricing-row--regular .logistics__price-value {
+            font-size: clamp(32px, 5vw, 44px);
+        }
+        .logistics__pricing-row--regular .logistics__price-alt {
+            font-size: 18px;
+        }
+        .logistics__pricing-divider {
+            width: 80px;
+            height: 1px;
+            background: rgba(0,0,0,0.1);
+        }
+
+        /* ===== Promo banner ===== */
+        .promo-banner {
+            background: var(--coral);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 24px;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        .promo-banner a {
+            color: var(--white);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
 
         /* ===== FAQ ===== */
         .faq { background: var(--white); }
@@ -957,8 +1012,13 @@
 </head>
 <body>
 
+    <!-- ===== PROMO BANNER ===== -->
+    <div class="promo-banner">
+        Скидка при оплате до&nbsp;22&nbsp;февраля
+    </div>
+
     <!-- ===== HERO ===== -->
-    <section class="hero">
+    <section class="hero" style="padding-top: 180px;">
         <div class="container">
             <span class="hero__tag">Группа поддержки для слэш-карьеристов</span>
             <h1>Для тех, кто совмещает в&nbsp;карьере разные роли и&nbsp;проекты</h1>
@@ -1238,9 +1298,19 @@
                 </div>
             </div>
             <div class="logistics__price reveal-scale">
-                <div class="logistics__price-value">250&euro;</div>
-                <div class="logistics__price-alt">/ 25&nbsp;000&nbsp;&#8381;</div>
-                <div class="logistics__price-period">за 4 недели</div>
+                <div class="logistics__pricing-rows">
+                    <div class="logistics__pricing-row">
+                        <span class="logistics__pricing-label">при оплате до&nbsp;22&nbsp;февраля&nbsp;&mdash;</span>
+                        <span class="logistics__price-value--early">200&euro;</span>
+                        <span class="logistics__price-alt--early">/ 20&nbsp;000&nbsp;&#8381;</span>
+                    </div>
+                    <div class="logistics__pricing-divider"></div>
+                    <div class="logistics__pricing-row logistics__pricing-row--regular">
+                        <span class="logistics__pricing-label">при оплате с&nbsp;22&nbsp;февраля&nbsp;&mdash;</span>
+                        <span class="logistics__price-value">250&euro;</span>
+                        <span class="logistics__price-alt">/ 25&nbsp;000&nbsp;&#8381;</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
